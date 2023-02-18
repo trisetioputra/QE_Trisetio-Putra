@@ -23,11 +23,13 @@ Beberapa hal dapat diamati pada hasil pengetesan tersebut, diantaranya adalah:
     - Dilakukan terhadap 15 virtual user
     - Terdapat 110 iterasi, atau pengetesan dilakukan sebanyak 110 pengujian
     - Terdapat dua skenario yang diuji
-    - 
+    - Pengetesan merupakan non functional testing, dan kemungkinan merupakan performance testing untuk menguji kecepatan request dari API
+    
 
 # Software Testing as a Career Path  
 
-adasda
+Sebutkan berbagai skill yang dibutuhkan untuk menjadi seorang software tester!
+    - 
 
 ## Referensi:
 https://www.guru99.com/introduction-to-selenium.html
