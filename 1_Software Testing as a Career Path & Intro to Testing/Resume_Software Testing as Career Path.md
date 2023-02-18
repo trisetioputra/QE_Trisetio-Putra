@@ -1,1 +1,3 @@
-Folder pengumpulan tugas untuk Alterra Academy Quality Engineering - Trisetio Putra
+- Terdapat beberapa skill yang harus dimiliki oleh seorang software tester, yang bisa dibagi menjadi techincal skills (skill UNIX, Test case management tools, tracking tools, automation tools) dan non technical skills (komunikasi, manajemen waktu dan organisasi, analisis, sikap yang positif, dan kecintaan terhadap testing)
+- Terdapat metode penulisan test case seperti boundary value testing dan mutation testing. 
+- Terdapat alternatif karir yang dapat dikerjakan oleh seorang software tester seperti performance tester, penetration tester, system analyst, dan scrum master
