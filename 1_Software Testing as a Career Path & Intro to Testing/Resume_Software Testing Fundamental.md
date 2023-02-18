@@ -1,1 +1,3 @@
-Folder pengumpulan tugas untuk Alterra Academy Quality Engineering - Trisetio Putra
+- Software testing tidak hanya melakukan penegetesan software, namun segala upaya yang dilakukan untuk memastikan bahwa produk software yang dihasilkan sesuai dengan standar kualitas dan kebutuhan pengguna.
+- Testing dilakukan pada berbagai platform produk, seperti API, mobile web, app, dan desktop web.
+- Testing dapat dipecahkan menjadi beberapa kriteria, seperti fungsional vs non fungsional, manual vs automated, dan berbagai level testing (Unit, Integration, System, Acceptance testing).
