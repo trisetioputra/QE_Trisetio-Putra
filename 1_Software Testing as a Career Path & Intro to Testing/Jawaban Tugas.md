@@ -26,8 +26,8 @@ Beberapa hal dapat diamati pada hasil pengetesan tersebut, diantaranya adalah:
     - 
 
 # Software Testing as a Career Path  
-## 1. Sebutkan berbagai skill yang dibutuhkan untuk menjadi seorang software tester!
-    - 
+
+adasda
 
 ## Referensi:
 https://www.guru99.com/introduction-to-selenium.html
