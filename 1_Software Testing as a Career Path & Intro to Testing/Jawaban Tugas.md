@@ -25,7 +25,7 @@ Beberapa hal dapat diamati pada hasil pengetesan tersebut, diantaranya adalah:
     - Terdapat dua skenario yang diuji
     - 
 
-# Software Testing as a Career Path
+# Software Testing as a Career Path  
 1. Sebutkan berbagai skill yang dibutuhkan untuk menjadi seorang software tester!
     - 
 
