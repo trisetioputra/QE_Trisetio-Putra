@@ -9,3 +9,6 @@ Saya menambahkan kata kata pada readme.md directory terluar
 
 - Lakukan Pull Request pada branch tersebut sehingga akan menambah hal baru pada branch main/master
     - terdapat foto terkait Pull Request
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/70261732/221198858-1f638d87-cd72-4d4a-8b77-9e6673957893.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/70261732/221198593-898ba9e2-68dc-4b18-b003-5eeff58fd708.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/70261732/221199011-ebd45884-638e-46fb-af9f-a802c229b34c.png">
