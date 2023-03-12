@@ -20,7 +20,7 @@
 ### OOP
 #### Soal Prioritas 1 
 ![Screen Shot 2023-03-12 at 17 35 48](https://user-images.githubusercontent.com/70261732/224539238-d98bd1a9-d3c3-4246-8b75-235a2c8a9596.png)
-#### Soal Prioritas 1 
+#### Soal Prioritas 2 
 ![Screen Shot 2023-03-12 at 17 36 07](https://user-images.githubusercontent.com/70261732/224539250-1b75c925-360c-4601-9c31-eb7082cb5c81.png)
 #### Soal Explorasi 
 ##### Case Create
