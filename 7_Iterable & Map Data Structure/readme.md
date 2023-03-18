@@ -1,1 +1,1 @@
-Folder pengumpulan tugas untuk Alterra Academy Quality Engineering - Trisetio Putra
+Kode dan penjalasan serta hasil outputnya ada pada folder Praktikum
