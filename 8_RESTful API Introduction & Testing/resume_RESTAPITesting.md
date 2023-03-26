@@ -1,0 +1,3 @@
+1. Salah satu alat yang sangat umum digunakan untuk pengetesan API adalah Postman dengan kemampuannya untuk menunjang koleksi API, pembuatan script automation, dan mengkonstruk pemanggilan API
+2. API testing tidak hanya dilakukan untuk mengecek fungsionalitas data yang diberikan/ dikirimkan, namun juga dari segi performa dan keamanan dari data
+3. API testing memiliki beberapa kesulitan yang tidak ditemukan pada unit testing pada umumnya, seperti contohnya tidak adanya GUI untuk membantu QA dalam pengetesan, perlu diketahuinya semua kombinasi parameter dan balikan yang harus dilakukan pengecekan, dan mengetahui performa dari API tersebut ketika diberikan banyak request dalam waktu yang bersamaan 
