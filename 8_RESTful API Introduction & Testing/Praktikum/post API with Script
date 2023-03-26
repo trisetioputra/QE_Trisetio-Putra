@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "bf425b1f-3006-43e4-ad18-01070e1c3ffc",
+		"name": "Post collection Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17255447"
+	},
+	"item": [
+		{
+			"name": "Get all data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= pm.response.json();",
+							"const exceedArraySize=101;",
+							"",
+							"//positive case",
+							"pm.test(`[POS] response status should be 200`, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(`[POS] response should return the data type of array`, function () {",
+							"    pm.expect(response).to.be.an(\"array\");",
+							"});",
+							"",
+							"pm.test(`[POS]each post data should contain the correct attribute`, function () {",
+							"    pm.expect(response[0]).to.ownProperty(\"id\");",
+							"    pm.expect(response[0]).to.ownProperty(\"userId\");",
+							"    pm.expect(response[0]).to.ownProperty(\"title\");",
+							"    pm.expect(response[0]).to.ownProperty(\"body\");",
+							"});",
+							"",
+							"pm.test(`[POS] response should return more than 1 data`, function () {",
+							"    pm.expect(response.length).to.be.greaterThan(1);",
+							"});",
+							"",
+							"//negative case",
+							"pm.test(`[NEG] response should not return ${exceedArraySize} data size`, function () {",
+							"    pm.expect(response.length).to.be.lessThan(exceedArraySize)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.variables.get(\"index\")) {\r",
+							"const parse = require('csv-parse/lib/sync');\r",
+							"\r",
+							"const input = `\r",
+							"testNumber,testType,userId,id,title,body\r",
+							"1,POS,1,1,hello dek,test body\r",
+							"2,NEG,11,3,,test body\r",
+							"`;\r",
+							"\r",
+							"    const records = parse(input, {\r",
+							"        columns: true,\r",
+							"        skip_empty_lines: true\r",
+							"        }\r",
+							"    )\r",
+							"\r",
+							"    pm.variables.set(\"index\", 0);\r",
+							"    pm.variables.set(\"records\", records);\r",
+							"}\r",
+							"\r",
+							"records = pm.variables.get(\"records\");\r",
+							"index = pm.variables.get(\"index\");\r",
+							"\r",
+							"if (index !== records.length) {\r",
+							"    for (let i of Object.entries(records[index])) {\r",
+							"        pm.variables.set(i[0], i[1]);\r",
+							"    }\r",
+							"    pm.variables.set(\"index\", ++index);\r",
+							"    pm.variables.get(\"index\")===records.length?null:postman.setNextRequest(pm.info.requestName);\r",
+							"}\r",
+							"\r",
+							"if (index == records.length) {\r",
+							"    pm.variables.unset(\"index\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= pm.response.json();\r",
+							"var expectedId= pm.variables.get(\"id\");\r",
+							"var expectedUserId= pm.variables.get(\"userId\");\r",
+							"var expectedTitle= pm.variables.get(\"title\");\r",
+							"var expectedBody= pm.variables.get(\"body\");\r",
+							"\r",
+							"pm.test(`[POS] response status should be 201`, function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(`[POS] response should return the data type of object`, function () {\r",
+							"    pm.expect(response).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"pm.test(`[POS] response data should contain the correct attribute`, function () {\r",
+							"    if(pm.variables.get(\"title\")!=undefined){\r",
+							"        pm.expect(response).to.ownProperty(\"id\");\r",
+							"        pm.expect(response).to.ownProperty(\"userId\");\r",
+							"        pm.expect(response).to.ownProperty(\"title\");\r",
+							"        pm.expect(response).to.ownProperty(\"body\");\r",
+							"    }\r",
+							"    else{\r",
+							"        pm.expect(response).to.ownProperty(\"id\");\r",
+							"        pm.expect(response).to.ownProperty(\"userId\");\r",
+							"        pm.expect(response).to.ownProperty(\"body\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(`[POS] response data should return the correct value based on request`, function () {\r",
+							"    if(pm.variables.get(\"title\")!=undefined){\r",
+							"        pm.expect(response.userId).to.eq(parseInt(expectedUserId));\r",
+							"        pm.expect(response.title).to.eq(expectedTitle);\r",
+							"        pm.expect(response.body).to.eq(expectedBody);\r",
+							"    }\r",
+							"    else{\r",
+							"        pm.expect(response.userId).to.eq(parseInt(expectedUserId));\r",
+							"        pm.expect(response.body).to.eq(expectedBody);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(`[NEG] response id value should not reflect based on given ID on body`, function () {\r",
+							"    pm.expect(response.id).to.not.equal(pm.variables.get(\"id\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get data by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"if (!pm.variables.get(\"index\")) {\r",
+							"const parse = require('csv-parse/lib/sync');\r",
+							"\r",
+							"const input = `\r",
+							"testType,id\r",
+							"POS,1\r",
+							"NEG,0\r",
+							"NEG,10000\r",
+							"`;\r",
+							"\r",
+							"    const records = parse(input, {\r",
+							"        columns: true,\r",
+							"        skip_empty_lines: true\r",
+							"        }\r",
+							"    )\r",
+							"\r",
+							"    pm.variables.set(\"index\", 0);\r",
+							"    pm.variables.set(\"records\", records);\r",
+							"}\r",
+							"\r",
+							"records = pm.variables.get(\"records\");\r",
+							"index = pm.variables.get(\"index\");\r",
+							"\r",
+							"if (index !== records.length) {\r",
+							"    for (let i of Object.entries(records[index])) {\r",
+							"        pm.variables.set(i[0], i[1]);\r",
+							"    }\r",
+							"    pm.variables.set(\"index\", ++index);\r",
+							"    pm.variables.get(\"index\")===records.length?null:postman.setNextRequest(pm.info.requestName);\r",
+							"}\r",
+							"\r",
+							"if (index == records.length) {\r",
+							"    pm.variables.unset(\"index\");\r",
+							"}\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= pm.response.json();\r",
+							"\r",
+							"if(pm.variables.get(\"testType\")==\"POS\"){\r",
+							"    pm.test(`[POS] response status should be 200`, function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[POS] response should return the data type of object`, function () {\r",
+							"        pm.expect(response).to.be.an(\"object\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[POS] response data should contain the correct attribute`, function () {\r",
+							"        pm.expect(response).to.ownProperty(\"id\");\r",
+							"        pm.expect(response).to.ownProperty(\"userId\");\r",
+							"        pm.expect(response).to.ownProperty(\"title\");\r",
+							"        pm.expect(response).to.ownProperty(\"body\");\r",
+							"    });\r",
+							"}\r",
+							"else{\r",
+							"    pm.test(`[NEG] response status should be 404 when ID is invalid, such as ${pm.variables.get(\"id\")}`, function () {\r",
+							"        pm.response.to.have.status(404);\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{id}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update data by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.variables.get(\"index\")) {\r",
+							"const parse = require('csv-parse/lib/sync');\r",
+							"\r",
+							"const input = `\r",
+							"testNumber,testType,userId,id,title,body\r",
+							"1,POS,1,1,hello dek,test body\r",
+							"2,POS,11,3,,test body\r",
+							"3,NEG,11,,halo dek,test body\r",
+							"`;\r",
+							"\r",
+							"    const records = parse(input, {\r",
+							"        columns: true,\r",
+							"        skip_empty_lines: true\r",
+							"        }\r",
+							"    )\r",
+							"\r",
+							"    pm.variables.set(\"index\", 0);\r",
+							"    pm.variables.set(\"records\", records);\r",
+							"}\r",
+							"\r",
+							"records = pm.variables.get(\"records\");\r",
+							"index = pm.variables.get(\"index\");\r",
+							"\r",
+							"if (index !== records.length) {\r",
+							"    for (let i of Object.entries(records[index])) {\r",
+							"        pm.variables.set(i[0], i[1]);\r",
+							"    }\r",
+							"    pm.variables.set(\"index\", ++index);\r",
+							"    pm.variables.get(\"index\")===records.length?null:postman.setNextRequest(pm.info.requestName);\r",
+							"}\r",
+							"\r",
+							"if (index == records.length) {\r",
+							"    pm.variables.unset(\"index\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= pm.response.json();\r",
+							"var expectedId= pm.variables.get(\"id\");\r",
+							"var expectedUserId= pm.variables.get(\"userId\");\r",
+							"var expectedTitle= pm.variables.get(\"title\");\r",
+							"var expectedBody= pm.variables.get(\"body\");\r",
+							"\r",
+							"if(pm.variables.get(\"testType\")==\"POS\"){\r",
+							"    pm.test(`[POS] response status should be 200`, function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[POS] response should return the data type of object`, function () {\r",
+							"        pm.expect(response).to.be.an(\"object\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[POS] response data should return the correct value based on request`, function () {\r",
+							"        if(pm.variables.get(\"title\")!=undefined){\r",
+							"            pm.expect(response.userId).to.eq(parseInt(expectedUserId));\r",
+							"            pm.expect(response.title).to.eq(expectedTitle);\r",
+							"            pm.expect(response.body).to.eq(expectedBody);\r",
+							"        }\r",
+							"        else{\r",
+							"            pm.expect(response.userId).to.eq(parseInt(expectedUserId));\r",
+							"            pm.expect(response.body).to.eq(expectedBody);\r",
+							"        }\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[NEG] response id value should not reflect based on given ID on body`, function () {\r",
+							"        pm.expect(response.id).to.not.equal(pm.variables.get(\"id\"));\r",
+							"    });\r",
+							"}\r",
+							"else{\r",
+							"    pm.test(`[NEG] response status should be 404 when ID is invalid, such as ${pm.variables.get(\"id\")}`, function () {\r",
+							"        pm.response.to.have.status(404);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{id}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.variables.get(\"index\")) {\r",
+							"const parse = require('csv-parse/lib/sync');\r",
+							"\r",
+							"const input = `\r",
+							"testType,id\r",
+							"POS,1\r",
+							"NEG,0\r",
+							"NEG,10000\r",
+							"`;\r",
+							"\r",
+							"    const records = parse(input, {\r",
+							"        columns: true,\r",
+							"        skip_empty_lines: true\r",
+							"        }\r",
+							"    )\r",
+							"\r",
+							"    pm.variables.set(\"index\", 0);\r",
+							"    pm.variables.set(\"records\", records);\r",
+							"}\r",
+							"\r",
+							"records = pm.variables.get(\"records\");\r",
+							"index = pm.variables.get(\"index\");\r",
+							"\r",
+							"if (index !== records.length) {\r",
+							"    for (let i of Object.entries(records[index])) {\r",
+							"        pm.variables.set(i[0], i[1]);\r",
+							"    }\r",
+							"    pm.variables.set(\"index\", ++index);\r",
+							"    pm.variables.get(\"index\")===records.length?null:postman.setNextRequest(pm.info.requestName);\r",
+							"}\r",
+							"\r",
+							"if (index == records.length) {\r",
+							"    pm.variables.unset(\"index\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= pm.response.json();\r",
+							"\r",
+							"if(pm.variables.get(\"testType\")==\"POS\"){\r",
+							"    pm.test(`[POS] response status should be 200`, function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"\r",
+							"    pm.test(`[POS] response should return empty object`, function () {\r",
+							"        pm.expect(response).to.be.empty;\r",
+							"    });\r",
+							"}\r",
+							"else{\r",
+							"    pm.test(`[NEG] response status should be 404 when ID is invalid, such as ${pm.variables.get(\"id\")}`, function () {\r",
+							"        pm.response.to.have.status(404);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{id}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		}
+	]
+}
