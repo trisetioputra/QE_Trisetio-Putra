@@ -45,6 +45,6 @@ Langkah pengerjaan yang saya lakukan sebagai berikut:
 <img width="1059" alt="image" src="https://user-images.githubusercontent.com/70261732/228511283-18dae84e-cba8-422e-a1f0-85ed325a6033.png">
 3. Membuat class untuk masing- masing page yang akan kena pengujian, dimana class tersebut akan berisi method yang berfungsi untuk mencari komponen UI dengan CSS finder melalui method .get() pada cypress
 <img width="1110" alt="image" src="https://user-images.githubusercontent.com/70261732/228511713-9a3d7606-9b82-484b-a4e1-11ddd04803ac.png">
-Class tersebut akan dipanggil pada file step seperti yang disebutkan pada nomor 2. 
+Class tersebut akan dipanggil pada file step seperti yang disebutkan pada nomor 2.    
 4. Menjalankan menggunakan npx cypress open dan melihat report.
 
