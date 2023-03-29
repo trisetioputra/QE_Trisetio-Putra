@@ -34,5 +34,4 @@ Perlu dicatat bahwa terkadang suatu komponen perlu ditunggu dulu beberapa saat, 
 <img width="705" alt="image" src="https://user-images.githubusercontent.com/70261732/228460752-1bf2a2df-8704-4f59-a51e-d595149bff6a.png">
 6. Setelahnya tinggal menjalankan maven untuk melihat hasil test.
 
-### Explorasi: Tidak sempat mengerjakan. Mohon maaf :)
-
+### Explorasi: Source code ada di folder sepulsa-cypress
