@@ -4,8 +4,9 @@
 ## Soal BDD
 ### Prioritas 1: Source code ada di folder serenity-cucumber-linkedin
 ### Hasil Report:
-<img width="1099" alt="image" src="https://user-images.githubusercontent.com/70261732/227795655-b16fcf9a-b864-4908-ae11-cdbbcc859d19.png">
-<img width="1093" alt="image" src="https://user-images.githubusercontent.com/70261732/227795661-0a618364-a6e7-41d5-b758-7572021dc14d.png">
+<img width="1086" alt="image" src="https://user-images.githubusercontent.com/70261732/228456801-645c4862-dbd6-48b6-b4d3-561a12b9c6cb.png">
+<img width="1083" alt="image" src="https://user-images.githubusercontent.com/70261732/228456853-a882d982-123c-4af4-8ee6-6caa72dd0923.png">
+<img width="1084" alt="image" src="https://user-images.githubusercontent.com/70261732/228456898-97aafc6b-4a98-4a43-938b-e1ad894e02cb.png">
 
 ### Prioritas 2: Source code ada di folder serenity-cucumber-sepulsa
 ### Hasil Report:
