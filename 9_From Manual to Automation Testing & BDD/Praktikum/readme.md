@@ -34,17 +34,19 @@ Perlu dicatat bahwa terkadang suatu komponen perlu ditunggu dulu beberapa saat, 
 <img width="705" alt="image" src="https://user-images.githubusercontent.com/70261732/228460752-1bf2a2df-8704-4f59-a51e-d595149bff6a.png">
 6. Setelahnya tinggal menjalankan maven untuk melihat hasil test.
 
-### Explorasi: Source code ada di folder sepulsa-cypress
-### Hasil report:
-<img width="1104" alt="image" src="https://user-images.githubusercontent.com/70261732/228510616-df4fb19f-5076-4449-9063-258740299587.png">
-### Penjelasan singkat terkait flow pengerjaan Cypress sepulsa.com
-Langkah pengerjaan yang saya lakukan sebagai berikut:
-1. Menggunakan file gerkhin .feature yang sama dengan Serenity, saya mengcopy ke dalam file .feature pada cypress
-<img width="768" alt="image" src="https://user-images.githubusercontent.com/70261732/228511021-b0ec6a52-e2c5-4636-bad7-945c0c3bc843.png">
+### Explorasi: Source code ada di folder sepulsa-cypress  
+### Hasil report:  
+<img width="1104" alt="image" src="https://user-images.githubusercontent.com/70261732/228510616-df4fb19f-5076-4449-9063-258740299587.png">  
+Penjelasan singkat terkait flow pengerjaan Cypress sepulsa.com  
+Langkah pengerjaan yang saya lakukan sebagai berikut:    
+
+1. Menggunakan file gerkhin .feature yang sama dengan Serenity, saya mengcopy ke dalam file .feature pada cypress  
+<img width="768" alt="image" src="https://user-images.githubusercontent.com/70261732/228511021-b0ec6a52-e2c5-4636-bad7-945c0c3bc843.png">  
 2. Membuat file steps yang dipisahkan berdasarkan halaman. File- file steps ini adalah pengimplementasian step gerkhin di .feature, dimana akan dilakukan verifikasi ekspektasi menggunakan method .should() yang dimiliki cypress. Berikut contohnya: 
 <img width="1059" alt="image" src="https://user-images.githubusercontent.com/70261732/228511283-18dae84e-cba8-422e-a1f0-85ed325a6033.png">
 3. Membuat class untuk masing- masing page yang akan kena pengujian, dimana class tersebut akan berisi method yang berfungsi untuk mencari komponen UI dengan CSS finder melalui method .get() pada cypress
 <img width="1110" alt="image" src="https://user-images.githubusercontent.com/70261732/228511713-9a3d7606-9b82-484b-a4e1-11ddd04803ac.png">
-Class tersebut akan dipanggil pada file step seperti yang disebutkan pada nomor 2  
+Class tersebut akan dipanggil pada file step seperti yang disebutkan pada nomor 2    
+
 4. Menjalankan menggunakan npx cypress open dan melihat report.
 
