@@ -3,8 +3,11 @@ package starter.stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.waits.WaitUntil;
+import org.junit.Assert;
 import starter.finder.Homepage;
 import starter.navigation.NavigateTo;
 
@@ -56,4 +59,42 @@ public class HomeStepDefinition {
                 Ensure.that(homepage.searchTerm).text().contains(keyword)
         );
     }
+    @And("{actor} select create job posting button")
+    public void selectJobPostingButton(Actor actor) {
+        actor.wasAbleTo(NavigateTo.postAJobButton());
+    }
+    @Then("{actor} will be directed to job posting page")
+    public void userWillSeeSearchPage(Actor actor) {
+        Assert.assertEquals(Serenity.getDriver().getCurrentUrl(),"https://www.linkedin.com/talent/post-a-job?trk=homepage-basic_talent-finder-cta");
+    }
+
+    @And("{actor} enters unregistered {string} and {string}")
+    public void entersEmailAndPassword(Actor actor, String email,String password) {
+        actor.attemptsTo(
+                NavigateTo.fillEmailAndPassword(email, password)
+        );
+    }
+    @And("{actor} press sign in button")
+    public void pressSignInButton(Actor actor) {
+        actor.wasAbleTo(
+                NavigateTo.submitEmailAndPassword()
+        );
+    }
+
+    @Then("{actor} will not be directed to homepage")
+    public void willNotDirectToHome(Actor actor) {
+        Assert.assertNotEquals(Serenity.getDriver().getCurrentUrl(),"https://www.linkedin.com/feed/");
+    }
+
+    @And("{actor} press {string} topic suggestion")
+    public void pressTopicSuggestion(Actor actor, String keyword) {
+        actor.wasAbleTo(NavigateTo.topicButton(keyword));
+    }
+    @Then("{actor} will be directed to topic page for the recommended {string}")
+    public void userWillSeeTopicPage(Actor actor, String keyword) {
+        actor.attemptsTo(
+                Ensure.that(homepage.topicTitle).text().contains(keyword)
+        );
+    }
+
 }
