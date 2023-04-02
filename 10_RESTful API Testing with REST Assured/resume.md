@@ -1,3 +1,3 @@
-- Saya belajar mengenai tujuan dari penggunaan git sebagai suatu version controller ketika kita ingin mengembangkan fitur dengan kode secara kolaboratif
-- Saya belajar mengenai branching dan conflict management dengan git menggunakan fungsi seperti git branch, checkout, merge, dan lain- lain.
-- Saya belajar mengenai local dan remote repository serta bagaimana saya dapat menghubungkan keduanya
+- Saya belajar mengenai penggunaan library RESTASSURED pada Serenity sebagai tools untuk verifikasi respon dari suatu API
+- Saya belajar mengenai bagaimana Gerkhin bdd juga bisa digunakan untuk pengujian API
+- Saya belajar mengenai bagaimana mengimplementasikan pengetesan Restful API melalui pendekatan automation
