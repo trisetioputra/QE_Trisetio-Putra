@@ -1,0 +1,3 @@
+- Saya belajar mengenai tujuan dari penggunaan git sebagai suatu version controller ketika kita ingin mengembangkan fitur dengan kode secara kolaboratif
+- Saya belajar mengenai branching dan conflict management dengan git menggunakan fungsi seperti git branch, checkout, merge, dan lain- lain.
+- Saya belajar mengenai local dan remote repository serta bagaimana saya dapat menghubungkan keduanya
