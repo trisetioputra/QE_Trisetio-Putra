@@ -1,3 +1,3 @@
 - Saya belajar mengenai penggunaan library RESTASSURED pada Serenity sebagai tools untuk verifikasi respon dari suatu API
-- Saya belajar mengenai bagaimana Gerkhin bdd juga bisa digunakan untuk pengujian API
-- Saya belajar mengenai bagaimana mengimplementasikan pengetesan Restful API melalui pendekatan automation
+- Saya belajar mengenai bagaimana Gerkhin bdd juga bisa digunakan untuk pengujian API dengan pola dan sintax yang relatif sama untuk pengujian UI
+- Saya belajar mengenai bagaimana mengimplementasikan pengetesan Restful API melalui pendekatan automation pada Serenity dan Katalon
