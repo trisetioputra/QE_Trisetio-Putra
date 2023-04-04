@@ -1,4 +1,18 @@
 ### Source code ada di folder praktikum
+## Web Programming:
+### Soal 1: Web Programming/prioritas1.html
+### Soal 2: Web Programming/prioritas2.html
+### Explorasi: Web Programming/explorasi.html
+### Hasil Run soal 1:
+<img width="1120" alt="image" src="https://user-images.githubusercontent.com/70261732/229843021-7fc55985-82ad-49c7-87dd-34b989e57bc5.png"> 
+  
+### Hasil Run soal 2:
+<img width="1120" alt="image" src="https://user-images.githubusercontent.com/70261732/229843171-5ac760d2-0e58-43b7-8538-e90693f8aa6e.png">  
+  
+### Hasil Run soal eksplorasi:
+<img width="1113" alt="image" src="https://user-images.githubusercontent.com/70261732/229843265-eb246d7e-a13c-42b6-a3dd-f55ca1fe9474.png">  
+
+## Web Testing:
 ### Soal 1: serenity-sauce-demo
 ### Soal 2: serenity-sepulsa
 ### Screenshot hasil Run sauce demo (Terdapat 14 test case)
@@ -7,7 +21,7 @@
 <img width="1079" alt="image" src="https://user-images.githubusercontent.com/70261732/229837808-05a80b8e-6397-4078-801f-1c19fbbde109.png">
 <img width="1067" alt="image" src="https://user-images.githubusercontent.com/70261732/229837848-0463c8b6-0242-48d4-9da6-e6bfad883330.png">    
  
-### Screenshot hasil sepulsa (Terdapat 4 test case)
+### Screenshot hasil sepulsa (Terdapat 6 test case)
 <img width="1074" alt="image" src="https://user-images.githubusercontent.com/70261732/229838311-ee5adc0c-19dd-4129-b983-686dde7c89df.png">
 <img width="1081" alt="image" src="https://user-images.githubusercontent.com/70261732/229838358-6a372215-0d7a-44ac-9568-21a91685a2af.png">
 <img width="1071" alt="image" src="https://user-images.githubusercontent.com/70261732/229838404-b0451420-604d-4779-bbe5-b890ffc23b68.png">
